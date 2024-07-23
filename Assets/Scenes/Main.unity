@@ -433,6 +433,10 @@ MonoBehaviour:
   checkHit: 0
   isPressed: 0
   keyToPress: 276
+  goodEffect: {fileID: 4474618971046541602, guid: 8cc2f10a26b54ca4d8f0320bdc13ed72, type: 3}
+  greatEffect: {fileID: 4527005297099756291, guid: aaec2ee096fad2e478b09a665c38bad0, type: 3}
+  perfectEffect: {fileID: 5712425169787162192, guid: 128baacd2c9a09b43a511ac88f05ff6b, type: 3}
+  missEffect: {fileID: 904413283426595652, guid: 0a912d41900cc32468514e969c28911c, type: 3}
 --- !u!1 &238653395
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +651,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkHit: 0
   isPressed: 0
-  keyToPress: 273
+  keyToPress: 275
+  goodEffect: {fileID: 4474618971046541602, guid: 8cc2f10a26b54ca4d8f0320bdc13ed72, type: 3}
+  greatEffect: {fileID: 4527005297099756291, guid: aaec2ee096fad2e478b09a665c38bad0, type: 3}
+  perfectEffect: {fileID: 5712425169787162192, guid: 128baacd2c9a09b43a511ac88f05ff6b, type: 3}
+  missEffect: {fileID: 904413283426595652, guid: 0a912d41900cc32468514e969c28911c, type: 3}
 --- !u!1 &325538175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,7 +1297,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.4, z: -10}
+  m_LocalPosition: {x: 0, y: 4.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1852,7 +1860,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkHit: 0
   isPressed: 0
-  keyToPress: 275
+  keyToPress: 273
+  goodEffect: {fileID: 4474618971046541602, guid: 8cc2f10a26b54ca4d8f0320bdc13ed72, type: 3}
+  greatEffect: {fileID: 4527005297099756291, guid: aaec2ee096fad2e478b09a665c38bad0, type: 3}
+  perfectEffect: {fileID: 5712425169787162192, guid: 128baacd2c9a09b43a511ac88f05ff6b, type: 3}
+  missEffect: {fileID: 904413283426595652, guid: 0a912d41900cc32468514e969c28911c, type: 3}
 --- !u!1 &1160336783
 GameObject:
   m_ObjectHideFlags: 0
@@ -2500,7 +2512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c584341b4d00334c992c05fc80b2e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowFall: {fileID: 1559583572}
+  arrowFall: {fileID: 0}
   playMusic: {fileID: 515992357}
   currentScore: 0
   currentMultiplier: 1
@@ -3454,6 +3466,10 @@ MonoBehaviour:
   checkHit: 0
   isPressed: 0
   keyToPress: 274
+  goodEffect: {fileID: 4474618971046541602, guid: 8cc2f10a26b54ca4d8f0320bdc13ed72, type: 3}
+  greatEffect: {fileID: 4527005297099756291, guid: aaec2ee096fad2e478b09a665c38bad0, type: 3}
+  perfectEffect: {fileID: 5712425169787162192, guid: 128baacd2c9a09b43a511ac88f05ff6b, type: 3}
+  missEffect: {fileID: 904413283426595652, guid: 0a912d41900cc32468514e969c28911c, type: 3}
 --- !u!1 &2125296780
 GameObject:
   m_ObjectHideFlags: 0

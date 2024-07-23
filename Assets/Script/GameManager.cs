@@ -8,47 +8,68 @@ public class GameManager : MonoBehaviour
     public ArrowFall arrowFall;
     public AudioSource playMusic;
 
-    public int currentScore;
-    public int currentMultiplier;
-    public int scorePerGood = 100;
-    public int scorePerGreat = 125;
-    public int scorePerPerfect = 150;
-    public int multiplierTracker;
+    private int currentScore;
+    private int currentMultiplier;
+    private int multiplierTracker;
     public int[] multiplierThresholds;
 
+    private bool hasStartPlaying;
 
-    public bool hasStartPlaying;
+    public static GameManager Instance { get; private set; }
 
-    public static GameManager instance;
+    public Text scoreText;
+    public Text multiplierText;
 
-    public Text score;
-    public Text multiplierScore;
-
-    // Start is called before the first frame update
-    void Start()
+    public int CurrentScore
     {
-        instance = this;
-
-        score.text = "Score = 0";
-        currentMultiplier = 1;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (!hasStartPlaying)
+        get => currentScore;
+        set
         {
-            if(Input.anyKeyDown)
-            {
-                hasStartPlaying = true;
-                arrowFall.hasStarted = true;
-
-                playMusic.Play();
-            }
+            currentScore = value;
+            scoreText.text = "Score: " + currentScore;
         }
     }
 
-    public void arrowHit()
+    public int CurrentMultiplier
+    {
+        get => currentMultiplier;
+        set
+        {
+            currentMultiplier = value;
+            multiplierText.text = "Multiplier: x" + currentMultiplier;
+        }
+    }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void Start()
+    {
+        CurrentMultiplier = 1;
+        CurrentScore = 0;
+    }
+
+    void Update()
+    {
+        if (!hasStartPlaying && Input.anyKeyDown)
+        {
+            hasStartPlaying = true;
+            arrowFall.hasStarted = true;
+            playMusic.Play();
+        }
+    }
+
+    public void ArrowHit()
     {
         Debug.Log("hit");
 
@@ -59,42 +80,16 @@ public class GameManager : MonoBehaviour
             if (multiplierThresholds[currentMultiplier - 1] <= multiplierTracker)
             {
                 multiplierTracker = 0;
-                currentMultiplier++;
+                CurrentMultiplier++;
             }
         }
-
-        multiplierScore.text = "Multiplier: x" + currentMultiplier;
-
-        currentScore += scorePerGood * currentMultiplier;
-        score.text = "Score: " + currentScore;
     }
 
-    public void GoodHit()
-    {
-        currentScore += scorePerGood * currentMultiplier;
-        arrowHit();
-    }
-
-    public void GreatHit()
-    {
-        currentScore += scorePerGreat * currentMultiplier;
-        arrowHit();
-    }
-
-    public void PerfectHit()
-    {
-        currentScore += scorePerPerfect * currentMultiplier;
-        arrowHit();
-    }
-
-    public void arrowMiss()
+    public void ArrowMiss()
     {
         Debug.Log("miss");
 
-        currentMultiplier = 1;
+        CurrentMultiplier = 1;
         multiplierTracker = 0;
-
-        multiplierScore.text = "Multiplier: x" + currentMultiplier;
     }
-
 }

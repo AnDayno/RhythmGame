@@ -10,46 +10,32 @@ public class ArrowOnHit : MonoBehaviour
     public KeyCode keyToPress;
 
     public GameObject goodEffect, greatEffect, perfectEffect, missEffect;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(Input.GetKeyDown(keyToPress))
+        if (Input.GetKeyDown(keyToPress) && isPressed)
         {
-            if(isPressed)
+            checkHit = true;
+            gameObject.SetActive(false);
+
+            Hit hit;
+            if (Mathf.Abs(transform.position.y) > 0.25)
             {
-                checkHit = true;
-                gameObject.SetActive(false);
-
-                //GameManager.instance.arrowHit();
-
-                if(Mathf.Abs( transform.position.y) > 0.25)
-                {
-                    Debug.Log("Good");
-                    GameManager.instance.GoodHit();
-                    Instantiate(goodEffect, transform.position, goodEffect.transform.rotation);
-                }
-                else if (Mathf.Abs( transform.position.y) > 0.05f)
-                {
-                    Debug.Log("Great");
-                    GameManager.instance.GreatHit();
-                    Instantiate(greatEffect, transform.position, greatEffect.transform.rotation);
-                }
-                else
-                {
-                    Debug.Log("Perfect");
-                    GameManager.instance.PerfectHit();
-                    Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
-                }
-
-                checkHit = true;
-
+                hit = new GoodHit();
+                Debug.Log("Good");
             }
+            else if (Mathf.Abs(transform.position.y) > 0.05f)
+            {
+                hit = new GreatHit();
+                Debug.Log("Great");
+            }
+            else
+            {
+                hit = new PerfectHit();
+                Debug.Log("Perfect");
+            }
+
+            hit.Apply(GameManager.Instance, transform.position, GetEffect(hit));
         }
     }
 
@@ -66,12 +52,22 @@ public class ArrowOnHit : MonoBehaviour
         if (collision.tag == "Activator")
         {
             isPressed = false;
-
             if (!checkHit)
             {
-                GameManager.instance.arrowMiss();
-                Instantiate(missEffect, transform.position, missEffect.transform.rotation);
+                Hit missHit = new MissHit();
+                missHit.Apply(GameManager.Instance, transform.position, missEffect);
             }
         }
+    }
+
+    private GameObject GetEffect(Hit hit)
+    {
+        if (hit is GoodHit)
+            return goodEffect;
+        if (hit is GreatHit)
+            return greatEffect;
+        if (hit is PerfectHit)
+            return perfectEffect;
+        return null;
     }
 }
