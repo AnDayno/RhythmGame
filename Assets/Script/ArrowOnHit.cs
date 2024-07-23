@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArrowOnHit : MonoBehaviour
 {
-
+    public bool checkHit = false;
     public bool isPressed;
 
     public KeyCode keyToPress;
@@ -21,7 +21,11 @@ public class ArrowOnHit : MonoBehaviour
         {
             if(isPressed)
             {
+                checkHit = true;
                 gameObject.SetActive(false);
+
+                GameManager.instance.arrowHit();
+                checkHit = true;
             }
         }
     }
@@ -39,6 +43,11 @@ public class ArrowOnHit : MonoBehaviour
         if (collision.tag == "Activator")
         {
             isPressed = false;
+
+            if (!checkHit)
+            {
+                GameManager.instance.arrowMiss();
+            }
         }
     }
 }
