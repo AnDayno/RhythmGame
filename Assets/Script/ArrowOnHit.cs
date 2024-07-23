@@ -8,6 +8,8 @@ public class ArrowOnHit : MonoBehaviour
     public bool isPressed;
 
     public KeyCode keyToPress;
+
+    public GameObject goodEffect, greatEffect, perfectEffect, missEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +26,29 @@ public class ArrowOnHit : MonoBehaviour
                 checkHit = true;
                 gameObject.SetActive(false);
 
-                GameManager.instance.arrowHit();
+                //GameManager.instance.arrowHit();
+
+                if(Mathf.Abs( transform.position.y) > 0.25)
+                {
+                    Debug.Log("Good");
+                    GameManager.instance.GoodHit();
+                    Instantiate(goodEffect, transform.position, goodEffect.transform.rotation);
+                }
+                else if (Mathf.Abs( transform.position.y) > 0.05f)
+                {
+                    Debug.Log("Great");
+                    GameManager.instance.GreatHit();
+                    Instantiate(greatEffect, transform.position, greatEffect.transform.rotation);
+                }
+                else
+                {
+                    Debug.Log("Perfect");
+                    GameManager.instance.PerfectHit();
+                    Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
+                }
+
                 checkHit = true;
+
             }
         }
     }
@@ -47,6 +70,7 @@ public class ArrowOnHit : MonoBehaviour
             if (!checkHit)
             {
                 GameManager.instance.arrowMiss();
+                Instantiate(missEffect, transform.position, missEffect.transform.rotation);
             }
         }
     }

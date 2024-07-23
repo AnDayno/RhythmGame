@@ -10,9 +10,12 @@ public class GameManager : MonoBehaviour
 
     public int currentScore;
     public int currentMultiplier;
-    public int scorePerArrowHit = 100;
+    public int scorePerGood = 100;
+    public int scorePerGreat = 125;
+    public int scorePerPerfect = 150;
     public int multiplierTracker;
     public int[] multiplierThresholds;
+
 
     public bool hasStartPlaying;
 
@@ -62,8 +65,26 @@ public class GameManager : MonoBehaviour
 
         multiplierScore.text = "Multiplier: x" + currentMultiplier;
 
-        currentScore += scorePerArrowHit * currentMultiplier;
+        currentScore += scorePerGood * currentMultiplier;
         score.text = "Score: " + currentScore;
+    }
+
+    public void GoodHit()
+    {
+        currentScore += scorePerGood * currentMultiplier;
+        arrowHit();
+    }
+
+    public void GreatHit()
+    {
+        currentScore += scorePerGreat * currentMultiplier;
+        arrowHit();
+    }
+
+    public void PerfectHit()
+    {
+        currentScore += scorePerPerfect * currentMultiplier;
+        arrowHit();
     }
 
     public void arrowMiss()

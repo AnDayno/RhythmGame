@@ -204,7 +204,7 @@ Transform:
   m_GameObject: {fileID: 42740288}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.9282, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0.9282, y: 0, z: 0}
   m_LocalScale: {x: 0.25258017, y: 0.25258017, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -430,6 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e627c6ba4b177c54b96286236acf3f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkHit: 0
   isPressed: 0
   keyToPress: 276
 --- !u!1 &238653395
@@ -644,6 +645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e627c6ba4b177c54b96286236acf3f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkHit: 0
   isPressed: 0
   keyToPress: 273
 --- !u!1 &325538175
@@ -806,7 +808,7 @@ Transform:
   m_GameObject: {fileID: 335185279}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.0828, y: 0.2, z: 0}
+  m_LocalPosition: {x: 3.0828, y: 0, z: 0}
   m_LocalScale: {x: 0.2549263, y: 0.2549263, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -980,7 +982,7 @@ Transform:
   m_GameObject: {fileID: 450328914}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.23, y: 0.2, z: 0}
+  m_LocalPosition: {x: -1.23, y: 0, z: 0}
   m_LocalScale: {x: 0.25615445, y: 0.25615445, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1848,6 +1850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e627c6ba4b177c54b96286236acf3f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkHit: 0
   isPressed: 0
   keyToPress: 275
 --- !u!1 &1160336783
@@ -2234,7 +2237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1605572179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2497,9 +2500,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c584341b4d00334c992c05fc80b2e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playMusic: {fileID: 515992357}
-  hasStartPlaying: 0
   arrowFall: {fileID: 1559583572}
+  playMusic: {fileID: 515992357}
+  currentScore: 0
+  currentMultiplier: 1
+  scorePerGood: 100
+  scorePerGreat: 125
+  scorePerPerfect: 150
+  multiplierTracker: 0
+  multiplierThresholds: 040000000800000010000000
+  hasStartPlaying: 0
+  score: {fileID: 1791990394}
+  multiplierScore: {fileID: 2046179001}
 --- !u!4 &1853754742
 Transform:
   m_ObjectHideFlags: 0
@@ -2754,7 +2766,7 @@ Transform:
   m_GameObject: {fileID: 1954822625}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.4193, y: 0.2, z: 0}
+  m_LocalPosition: {x: -3.4193, y: 0, z: 0}
   m_LocalScale: {x: 0.2561545, y: 0.2561545, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3439,6 +3451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e627c6ba4b177c54b96286236acf3f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkHit: 0
   isPressed: 0
   keyToPress: 274
 --- !u!1 &2125296780
